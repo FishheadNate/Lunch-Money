@@ -3,7 +3,7 @@ Simple tool to check account balances on [MySchoolBucks](https://www.myschoolbuc
 
 ## Requirements
 
-- Python
+- Python packages
   ```bash
   pip install -r requirements.txt
   ```
