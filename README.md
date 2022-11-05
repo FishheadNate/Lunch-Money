@@ -26,18 +26,6 @@ Simple tool to check account balances on [MySchoolBucks](https://www.myschoolbuc
 
 ## Dashboard
 
-```mermaid
-flowchart TB
-  (Title)
-  (Search Bar)
-  [Student 1 Balance][Student 2 Balance]
-  [Student 3 Balance][Student ... Balance]
-  [(Student 1 transactions)]
-  [(Student 2 transactions)]
-  [(Student 3 transactions)]
-  [(...)]
-```
-
 
 ## Overview
 1. Script will open a new Chrome browser and log into MySchoolBucks using the account credentials found in `login_creds.yml`.
