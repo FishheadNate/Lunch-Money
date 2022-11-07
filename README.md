@@ -20,17 +20,25 @@ Simple tool to check account balances on [MySchoolBucks](https://www.myschoolbuc
 
 ## Usage
 
-```bash
-./lunch-money.py
-```
+1. Collect account history from MSB
+  ```bash
+  ./lunch-money.py
+  ```
+
+2. Launch interactive dashboard
+  ```bash
+  streamlit run ./dashboard.py
+  ```
 
 ## Dashboard
 
+<img src='https://github.com/FishheadNate/Lunch-Money/blob/main/demo/LunchMoneyDashboard.png' width='600'>
 
 ## Overview
-1. Script will open a new Chrome browser and log into MySchoolBucks using the account credentials found in `login_creds.yml`.
+1. `lunch-money.py` opens a new Chrome browser and log into MySchoolBucks using the account credentials found in `login_creds.yml`.
 2. After account credentials are sent, the script will select the "Text Message" option for 2-Step Verification and ask for the single-use code to be entered in the terminal.
-3. Once successfully logged in, the script will navigate to the transactions history page for all the linked student accounts.
+3. Once successfully logged in, the script will pull transactions history data for all the linked student accounts and exports the data as a CSV.
+4. `dashboard.py` launches an interactive dashboard for viewing the CSV created by `lunch-money.py`.
 
 ---
 

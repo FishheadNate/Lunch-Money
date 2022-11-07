@@ -9,6 +9,8 @@ import logging
 import pandas as pd
 import streamlit as st
 
+import lunch_money
+
 logging.basicConfig(format='%(message)s', level=logging.INFO)
 logger = logging.getLogger()
 
@@ -25,6 +27,11 @@ def run(args):
         "<h1 style='text-align: center;'>{}</h1>".format(db_title),
         unsafe_allow_html=True
     )
+
+    update_button = st.button('Update Report Data')
+
+    if update_button:
+        update_report_data()
 
     balance_col, buffer, payments_col = st.columns([50, 3, 50])
     with balance_col:
@@ -130,6 +137,11 @@ def payments(data):
     )
 
     return bar_chart
+
+
+def update_report_data():
+    print('Updating Report')
+    lunch_money()
 
 
 def main():

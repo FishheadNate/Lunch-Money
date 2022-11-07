@@ -8,7 +8,7 @@
 import argparse
 import csv
 import logging
-import yaml
+# import yaml
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
