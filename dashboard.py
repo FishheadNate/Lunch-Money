@@ -14,45 +14,49 @@ logger = logging.getLogger()
 
 
 def run(args):
-    if args.demo:
-        df = pd.read_csv('demo/demo_data.csv')
-    else:
-        df = pd.read_csv('meal_history.csv')
-    df['Date'] = pd.to_datetime(df['Date'])
-
-    students = students_list(df)
-
     db_title = 'MySchoolBucks Personal Dashboard'
-
     st.markdown(
         "<h1 style='text-align: center;'>{}</h1>".format(db_title),
         unsafe_allow_html=True
     )
     st.markdown("---", unsafe_allow_html=True)
 
-    balance_col, buffer, payments_col = st.columns([50, 3, 50])
-    with balance_col:
-        st.markdown("<h3 style='text-align: left'>Current Balances</h3>", unsafe_allow_html=True)
-        st.markdown(current_balance(df, students), unsafe_allow_html=True)
+    if args.demo:
+        msb_csv = 'demo/demo_data.csv'
+    else:
+        msb_csv = 'meal_history.csv'
 
-    with payments_col:
-        st.markdown("<h3 style='text-align: left'>Account Total Deposits</h3>", unsafe_allow_html=True)
-        st.altair_chart(payments(df), use_container_width=True)
+    try:
+        df = pd.read_csv(msb_csv)
+        df['Date'] = pd.to_datetime(df['Date'])
 
-    st.markdown("---", unsafe_allow_html=True)
+        students = students_list(df)
 
-    st.markdown("<h3 style='text-align: left'>Daily Purchase Totals</h3>", unsafe_allow_html=True)
-    buffer, student_dropdown, buffer = st.columns([1, 200, 1])
-    with student_dropdown:
-        dropdown_key = st.selectbox("Student", [''] + students)
+        balance_col, buffer, payments_col = st.columns([50, 3, 50])
+        with balance_col:
+            st.markdown("<h3 style='text-align: left'>Current Balances</h3>", unsafe_allow_html=True)
+            st.markdown(current_balance(df, students), unsafe_allow_html=True)
 
-    buffer, report, buffer = st.columns([1, 200, 1])
-    with report:
-        if dropdown_key != '':
-            st.altair_chart(purchases(df, dropdown_key), use_container_width=True)
-            st.markdown(meal_days(df, dropdown_key), unsafe_allow_html=True)
-        else:
-            st.write('Please select a student to report')
+        with payments_col:
+            st.markdown("<h3 style='text-align: left'>Account Total Deposits</h3>", unsafe_allow_html=True)
+            st.altair_chart(payments(df), use_container_width=True)
+        st.markdown("---", unsafe_allow_html=True)
+
+        st.markdown("<h3 style='text-align: left'>Daily Purchase Totals</h3>", unsafe_allow_html=True)
+        buffer, student_dropdown, buffer = st.columns([1, 200, 1])
+        with student_dropdown:
+            dropdown_key = st.selectbox("Student", [''] + students)
+
+        buffer, report, buffer = st.columns([1, 200, 1])
+        with report:
+            if dropdown_key != '':
+                st.altair_chart(purchases(df, dropdown_key), use_container_width=True)
+                st.markdown(meal_days(df, dropdown_key), unsafe_allow_html=True)
+            else:
+                st.write('Please select a student to report')
+
+    except IOError:
+        st.write('MySchoolBucks data is missing. Please run `lunch_money.py` and refresh the dashboard.')
 
 
 def students_list(data):
@@ -97,8 +101,7 @@ def current_balance(data, students):
 
 
 def payments(data):
-    filtered_df = data[data["Payment Method"] != 'Online Payment']
-    payments = filtered_df.loc[:, ('Student', 'Amount')]
+    payments = data.loc[data["Payment Method"] != 'Online Payment', ['Student', 'Amount']]
 
     payments["Amount"] = payments["Amount"].apply(lambda x: x * -1)
     payments["Student"] = payments["Student"].apply(lambda x: x.split(' ')[1])

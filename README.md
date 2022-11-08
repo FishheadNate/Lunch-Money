@@ -29,6 +29,10 @@ Simple tool to check account balances on [MySchoolBucks](https://www.myschoolbuc
   ```bash
   streamlit run ./dashboard.py
   ```
+  - Run Dashboard with [demo data](https://github.com/FishheadNate/Lunch-Money/blob/main/demo/demo_data.csv)
+    ```bash
+    streamlit run ./dashboard.py -- --demo
+    ```
 
 ## Dashboard
 
