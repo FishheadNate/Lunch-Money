@@ -36,7 +36,9 @@ Simple tool to check account balances on [MySchoolBucks](https://www.myschoolbuc
 
 ## Dashboard
 
-<img src='https://github.com/FishheadNate/Lunch-Money/blob/main/demo/LunchMoneyDashboard.png' width='600'>
+[**Demo Video**](https://github.com/FishheadNate/Lunch-Money/blob/main/demo/Lunch-Money-demo.mov)
+
+<img src='https://github.com/FishheadNate/Lunch-Money/blob/main/demo/LunchMoneyDashboard.png' width='600'>]
 
 ## Overview
 1. `lunch_money.py` opens a new Chrome browser and log into MySchoolBucks using the account credentials found in `login_creds.yml`.
