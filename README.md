@@ -21,22 +21,22 @@ Simple tool to check account balances on [MySchoolBucks](https://www.myschoolbuc
 ## Usage
 
 1. Collect account history from MSB
-  ```bash
-  ./lunch_money.py
-  ```
-
-2. Launch interactive dashboard
-  ```bash
-  streamlit run ./dashboard.py
-  ```
-  - Run Dashboard with [demo data](https://github.com/FishheadNate/Lunch-Money/blob/main/demo/demo_data.csv)
     ```bash
-    streamlit run ./dashboard.py -- --demo
+    ./lunch_money.py
     ```
 
-## Dashboard
+2. Click the button below to launch the interactive dashboard
 
-[**Demo Video**](https://github.com/FishheadNate/Lunch-Money/blob/main/demo/Lunch-Money-demo.mov)
+  [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://lunch-money.streamlit.app/)
+    - To run locally
+      ```bash
+      streamlit run ./dashboard.py
+      ```
+
+3. Use the upload option to add the CSV export from `./lunch_money.py` to the dashboard
+    - Demo data is built into the dashboard
+
+## Dashboard
 
 <img src='https://github.com/FishheadNate/Lunch-Money/blob/main/demo/LunchMoneyDashboard.png' width='600'>]
 
