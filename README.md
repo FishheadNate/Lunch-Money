@@ -1,5 +1,5 @@
 # Lunch-Money
-Simple tool to check account balances on [MySchoolBucks](https://www.myschoolbucks.com/)
+Interactive dashboard for montioring [MySchoolBucks](https://www.myschoolbucks.com/) account balances.
 
 ## Requirements
 
@@ -28,7 +28,7 @@ Simple tool to check account balances on [MySchoolBucks](https://www.myschoolbuc
 
 2. Click the button below to launch the interactive dashboard
 
-    :sandwich:[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://lunch-money.streamlit.app/)
+    :sandwich: [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://lunch-money.streamlit.app/) :sandwich:
 
     - To run locally
         ```bash
